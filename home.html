@@ -4,22 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataBet</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Brasileirão</h1>
-        <h2>Data: xx/xx/xxxx</h2>
+    <header class="navbar">
+        <div class="navbar__brand">
+            <img class="navbar__logo" src="#" alt="DataBet Logo" />
+            <span>DataBet</span>
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Campeonato Brasileiro</a></li>
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Campeonato Inglês</a></li>
+        </ul>
     </header>
 
-    <main>
-        <div><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-        <div><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-        <div><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-        <div><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
+    <main class="main">
+        <h1 class="main__championship">Brasileirão</h1>
+
+        <section class="main__day_schedule">
+            <h2>Data: xx/xx/xxxx</h2>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time id="match-time" datetime="2023-11-01">horario</time></div>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time id="match-time" datetime="2023-11-01">horario</time></div>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time id="match-time" datetime="2023-11-01">horario</time></div>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time id="match-time" datetime="2023-11-01">horario</time></div>
+        </section>
+        <section class="main__day_schedule">
+            <h2>Data: xx/xx/xxxx</h2>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
+            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
+        </section>
     </main>
     
-    <footer></footer>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a href="#" class="footer__item">Created by Eudijuno Scarcela</a>
+                <a href="#" class="footer__item">Check out my other projects</a>
+                <a href="#" class="footer__item">Instagram</a>
+            </section>
+            <section class="right">
+                <a href="#" class="footer__item">Github</a>
+                <a href="#" class="footer__item">Home</a>
+            </section>
+        </div>
+    </footer>
     
 </body>
 </html>
