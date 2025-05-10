@@ -78,7 +78,7 @@ body {
     margin-left: 20px;
     display: flex;
     align-items: center;
-    
+    border-top: 10px;
 }
 
 .main__day_schedule h3 {
