@@ -19,21 +19,20 @@
     </header>
 
     <main class="main">
-        <h1 class="main__championship">Brasileirão</h1>
+        <h2 class="main__championship">Brasileirão</h2>
 
         <section class="main__day_schedule">
-            <h2>Data: xx/xx/xxxx</h2>
+            <h3>Data: xx/xx/xxxx</h3>
             {% for match in matches %}
-                <a href="match_1.html"><div class="main__day_schedule-item"><h3>{{ match["mandante"] }} x {{ match["visitante"] }}</h3><time id="match-time">({{ match["hora"] }})</time></div></a>
+                <a href="match_1.html">
+                    <div class="main__day_schedule_match">
+                        <span class="main__day_schedule_match_home">{{match["mandante"] }}</span> 
+                        <span class="main__day_schedule_match_x">x</span>
+                        <span class="main__day_schedule_match_away">{{ match["visitante"] }}</span>
+                        <span class="main__day_schedule_match_time"><time id="match-time">({{ match["hora"] }})</time></span>
+                    </div>
+                </a>
             {% endfor %}
-        </section>
-        <section class="main__day_schedule">
-            <h2>Data: xx/xx/xxxx</h2>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-        </section>
     </main>
     
     <footer class="footer">

@@ -3,9 +3,11 @@ html {
 }
 
 body {
-    background-color: #2b4c7e;
+    background-color: #7a7a7a;
     box-sizing: border-box;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 *, *::after, *::before {
@@ -17,7 +19,7 @@ body {
 .navbar {
     background-color: aliceblue;
     max-width: 640px;
-    margin: 50px auto;
+    margin: 20px auto 10px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: row;
@@ -61,7 +63,7 @@ body {
 
 .main {
     max-width: 640px;
-    margin: 50px auto;
+    margin: 10px auto 50px auto;
     padding-left: 20px;
 }
 
@@ -72,29 +74,42 @@ body {
 .main__day_schedule {
     display: flex;
     flex-direction: column;
+    max-width: 640px;
 }
 
-.main__day_schedule-item {
+.main__day_schedule_match {
     margin-left: 20px;
-    display: flex;
+    border-top: 20px;
+    display: grid;
+    grid-template-columns: 100px 30px 100px 60px;
     align-items: center;
-    border-top: 10px;
 }
 
-.main__day_schedule h3 {
-    margin-top: 1px;
-    margin-bottom: 1px;
+.main__day_schedule_match:hover {
+    background-color: #4a374d;
+}
+
+.main__day_schedule_match:active {
+    background-color: #b167bd;
+}
+
+.main__day_schedule_match_home {
+    text-align: right;
+}
+
+.main__day_schedule_match_x {
+    text-align: center;
 }
 
 #match-time {
     margin-left: 5px;
-    color: black;
+    color: rgba(0, 0, 0, 0.651);
 }
 
 /* Footer */
 
 .footer {
-    background-color: #012d4a;
+    background-color: #4a374d;
     color: #a8b6bf;
     /* position: fixed; */
     left: 0;
