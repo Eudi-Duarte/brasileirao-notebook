@@ -1,7 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 import pandas as pd
-
-brasileirao_matches = pd.read_csv("data/clean/brasileirao_matches.csv").to_dict(orient="records")
+import os
 
 templates_dir = "./templates"
 env = Environment(loader=FileSystemLoader(templates_dir))
@@ -11,6 +10,7 @@ def render_home():
     This function aims to render Home static HTML files using Jinja templates
     and data processed via a notebook.
     '''
+    brasileirao_matches = pd.read_csv("data/clean/brasileirao_matches.csv").to_dict(orient="records")
     home_template = env.get_template("home.html")
     rendered_home_template = home_template.render(matches=brasileirao_matches)
     
@@ -18,5 +18,31 @@ def render_home():
     with open("public/home.html", "w") as f:
         f.write(rendered_home_template)
 
+def render_teams_rundow():
+    teams_path = "data/clean/teams/"
+    for team_file in os.listdir(teams_path):
+        team_name = team_file.replace(".csv", "")
+
+        team_rundown = pd.read_csv(teams_path+team_file)
+        team_rundown["x"] = "x"
+        team_rundown = team_rundown[["mandante", "mandante_Placar", "x", "visitante_Placar", "visitante", "data", "hora"]].to_html(index=False, border=0, classes="team_rundown", header=False)
+
+        # team_rundown = team_rundown.to_dict(orient="records")
+        team_template = env.get_template("team.html")
+        rendered_team_template = team_template.render(team_rundown=team_rundown, team_name=team_name)
+
+        with open(f"public/teams/{team_name}.html", "w") as f:
+            f.write(rendered_team_template)
+
 if __name__ == "__main__":
-    render_home()
+
+    ## Render Home
+    try:
+        render_home()
+    except Exception as e:
+        print("Error while rendering home.html")
+    else:
+        print("'home.html' rendered successufully")
+
+    ## Render teams_rundown
+    render_teams_rundow()

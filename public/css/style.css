@@ -145,4 +145,12 @@ body {
 }
 
 
+/* TEAM PAGE */
 
+.team_rundown td {
+    padding: 0px 5px;
+}
+
+.team_rundown td:nth-child(1) {
+    text-align: right;
+}

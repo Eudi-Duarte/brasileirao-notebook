@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataBet</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
 
@@ -20,23 +20,10 @@
 
     <main class="main">
 
-        Match 1
+        <h1 class="main__championship">{{ team_name }}</h1>
 
-        <!-- <h1 class="main__championship">Brasileirão</h1> -->
+        {{ team_rundown }}
 
-        <!-- <section class="main__day_schedule">
-            <h2>Data: xx/xx/xxxx</h2>
-            {% for match in matches %}
-                <div class="main__day_schedule-item"><h3>{{ match["mandante"] }} x {{ match["visitante"] }}</h3><time id="match-time">({{ match["hora"] }})</time></div>
-            {% endfor %}
-        </section>
-        <section class="main__day_schedule">
-            <h2>Data: xx/xx/xxxx</h2>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-            <div class="main__day_schedule-item"><h3>Team x Team</h3><time datetime="2023-11-01">horario</time></div>
-        </section> -->
     </main>
     
     <footer class="footer">

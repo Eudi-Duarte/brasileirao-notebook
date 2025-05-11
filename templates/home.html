@@ -24,14 +24,18 @@
         <section class="main__day_schedule">
             <h3>Data: xx/xx/xxxx</h3>
             {% for match in matches %}
-                <a href="match_1.html">
+                <!-- <a href="match_1.html"> -->
                     <div class="main__day_schedule_match">
-                        <span class="main__day_schedule_match_home">{{match["mandante"] }}</span> 
+                        <a class="main__day_schedule_match_home" href="teams/{{ match['mandante']|lower }}.html">
+                            {{ match["mandante"] }}
+                        </a>
                         <span class="main__day_schedule_match_x">x</span>
-                        <span class="main__day_schedule_match_away">{{ match["visitante"] }}</span>
+                        <a href="teams/{{ match['visitante']|lower }}.html">
+                            <span class="main__day_schedule_match_away">{{ match["visitante"] }}</span>
+                        </a>
                         <span class="main__day_schedule_match_time"><time id="match-time">({{ match["hora"] }})</time></span>
                     </div>
-                </a>
+                <!-- </a> -->
             {% endfor %}
     </main>
     
