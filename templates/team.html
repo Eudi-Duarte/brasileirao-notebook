@@ -21,8 +21,23 @@
     <main class="main">
 
         <h1 class="main__championship">{{ team_name }}</h1>
-
-        {{ team_rundown }}
+        <section>
+            {{ team_rundown }}
+        </section>
+        <hr>
+        <section class="team_home_away_stats">
+            <div class="stats_column">
+                <h3>Mandante/Visitante</h3>
+                <div class="team_stats_items">
+                    {% for stat, value in team_stats.items() %}
+                        <p>{{ stat }} : {{ value }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="stats_column">
+                <h3>Geral</h3>
+            </div>
+        </section>
 
     </main>
     

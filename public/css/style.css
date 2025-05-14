@@ -154,3 +154,21 @@ body {
 .team_rundown td:nth-child(1) {
     text-align: right;
 }
+
+.team_home_away_stats {
+    display: flex;
+    max-width: 640px;
+    /* justify-content: space-between; */
+}
+
+.stats_column {
+    width: 50%;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+}
+
+.team_stats_items {
+    display: flex;
+    flex-direction: column;
+}

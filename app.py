@@ -18,18 +18,28 @@ def render_home():
     with open("public/home.html", "w") as f:
         f.write(rendered_home_template)
 
-def render_teams_rundow():
+def render_teams_rundown():
     teams_path = "data/clean/teams/"
     for team_file in os.listdir(teams_path):
         team_name = team_file.replace(".csv", "")
 
         team_rundown = pd.read_csv(teams_path+team_file)
         team_rundown["x"] = "x"
-        team_rundown = team_rundown[["mandante", "mandante_Placar", "x", "visitante_Placar", "visitante", "data", "hora"]].to_html(index=False, border=0, classes="team_rundown", header=False)
+        team_rundown_html = team_rundown[["mandante", "mandante_Placar", "x", "visitante_Placar", "visitante", "data", "hora"]].to_html(index=False, border=0, classes="team_rundown", header=False)
+
+        # team stats
+        # host
+        team_rundown_host = team_rundown.loc[team_rundown["mandante"].str.lower() == team_name]
+        team_rundown_away = team_rundown.loc[team_rundown["visitante"].str.lower() == team_name.lower()]
+
+        team_stats = {
+            "gols_home": int(team_rundown_host["mandante_Placar"].sum()),
+            "gols_away": int(team_rundown_away["visitante_Placar"].sum())
+        }
 
         # team_rundown = team_rundown.to_dict(orient="records")
         team_template = env.get_template("team.html")
-        rendered_team_template = team_template.render(team_rundown=team_rundown, team_name=team_name)
+        rendered_team_template = team_template.render(team_rundown=team_rundown_html, team_name=team_name, team_stats=team_stats)
 
         with open(f"public/teams/{team_name}.html", "w") as f:
             f.write(rendered_team_template)
@@ -45,4 +55,4 @@ if __name__ == "__main__":
         print("'home.html' rendered successufully")
 
     ## Render teams_rundown
-    render_teams_rundow()
+    render_teams_rundown()
