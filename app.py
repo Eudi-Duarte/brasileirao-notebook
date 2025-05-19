@@ -25,7 +25,7 @@ def render_teams_rundown():
 
         team_rundown = pd.read_csv(teams_path+team_file)
         team_rundown["x"] = "x"
-        team_rundown_html = team_rundown[["mandante", "mandante_Placar", "x", "visitante_Placar", "visitante", "data", "hora"]].to_html(index=False, border=0, classes="team_rundown", header=False)
+        team_rundown_html = team_rundown[["mandante", "mandante_Placar", "x", "visitante_Placar", "visitante", "fdata", "hora"]].to_html(index=False, border=0, classes="team_rundown", header=False)
 
         # team stats
         # host
