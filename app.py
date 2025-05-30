@@ -23,25 +23,32 @@ def render_teams_rundown():
     for team_file in os.listdir(teams_path):
         team_name = team_file.replace(".csv", "")
 
+        # Team Rundown
         team_rundown = pd.read_csv(teams_path+team_file)
         team_rundown["x"] = "x"
         team_rundown_html = team_rundown[["mandante", "mandante_Placar", "x", "visitante_Placar", "visitante", "fdata", "hora"]].to_html(index=False, border=0, classes="team_rundown", header=False)
 
         # team stats
-        # host
         team_rundown_host = team_rundown.loc[team_rundown["mandante"].str.lower() == team_name]
         team_rundown_away = team_rundown.loc[team_rundown["visitante"].str.lower() == team_name.lower()]
 
+        # gols
         gols_host = int(team_rundown_host["mandante_Placar"].sum())
         gols_away = int(team_rundown_away["visitante_Placar"].sum())
 
+        # victories/loses
+        victories_host = len(team_rundown_host.loc[team_rundown_host["vencedor"].str.lower() == team_name])
+        victories_away = len(team_rundown_away.loc[team_rundown_away["vencedor"].str.lower() == team_name])
+
         team_stats = {
-            # "Gols Como Mandante": gols_host,
-            # "Gols Como Visitante": gols_away
-            "Gols": gols_away + gols_host
+            "Vitorias como Mandante": victories_host,
+            "Vitorias como Visitante": victories_away,
+            "Gols": gols_away + gols_host,
+            "Gols Como Mandante": gols_host,
+            "Gols Como Visitante": gols_away
         }
 
-        # team_rundown = team_rundown.to_dict(orient="records")
+        ## Render and save templates
         team_template = env.get_template("team.html")
         rendered_team_template = team_template.render(team_rundown=team_rundown_html, team_name=team_name, team_stats=team_stats)
 
