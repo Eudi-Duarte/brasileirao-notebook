@@ -158,7 +158,7 @@ body {
 .team_home_away_stats {
     display: flex;
     max-width: 640px;
-    /* justify-content: space-between; */
+    justify-content: center;
 }
 
 .stats_column {
@@ -169,6 +169,6 @@ body {
 }
 
 .team_stats_items {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto ;
 }

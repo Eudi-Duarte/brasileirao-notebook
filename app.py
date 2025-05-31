@@ -26,6 +26,9 @@ def render_teams_rundown():
         # Team Rundown
         team_rundown = pd.read_csv(teams_path+team_file)
         team_rundown["x"] = "x"
+        team_rundown["result"] = team_rundown.apply(
+            lambda x: "V" if x["vencedor"].lower() == team_name else "E" if x["vencedor"] == "-" else "D"
+            , axis=1)
         team_rundown_html = team_rundown[["mandante", "mandante_Placar", "x", "visitante_Placar", "visitante", "fdata", "hora"]].to_html(index=False, border=0, classes="team_rundown", header=False)
 
         # team stats
@@ -39,8 +42,14 @@ def render_teams_rundown():
         # victories/loses
         victories_host = len(team_rundown_host.loc[team_rundown_host["vencedor"].str.lower() == team_name])
         victories_away = len(team_rundown_away.loc[team_rundown_away["vencedor"].str.lower() == team_name])
+        victories = len(team_rundown.loc[team_rundown["result"] == "V"])
+        draws = len(team_rundown.loc[team_rundown["result"] == "E"])
+        loses = len(team_rundown.loc[team_rundown["result"] == "D"])
 
         team_stats = {
+            "Vitorias": victories,
+            "Derrotas": loses,
+            "Empates": draws,
             "Vitorias como Mandante": victories_host,
             "Vitorias como Visitante": victories_away,
             "Gols": gols_away + gols_host,
@@ -50,7 +59,7 @@ def render_teams_rundown():
 
         ## Render and save templates
         team_template = env.get_template("team.html")
-        rendered_team_template = team_template.render(team_rundown=team_rundown_html, team_name=team_name, team_stats=team_stats)
+        rendered_team_template = team_template.render(team_rundown=team_rundown_html, team_name=team_name.title(), team_stats=team_stats)
 
         with open(f"public/teams/{team_name}.html", "w") as f:
             f.write(rendered_team_template)

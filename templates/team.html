@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataBet</title>
+    <title>DataFut</title>
     <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
 
     <header class="navbar">
         <div class="navbar__brand">
-            <img class="navbar__logo" src="#" alt="DataBet Logo" />
-            <span>DataBet</span>
+            <img class="navbar__logo" src="#" alt="DataFut Logo" />
+            <span>DataFut</span>
         </div>
         <ul class="navbar__navigation">
-            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Campeonato Brasileiro</a></li>
+            <li class="navbar__navigation-item"><a href="../home.html" class="navbar__link">Campeonato Brasileiro</a></li>
         </ul>
     </header>
 
@@ -30,7 +30,7 @@
                 <h3>Statistics</h3>
                 <div class="team_stats_items">
                     {% for stat, value in team_stats.items() %}
-                        <span>{{ stat }} : {{ value }}</span>
+                        <span class="stats_item_name">{{ stat }}:</span class="stats_item_value"><span>{{ value }}</span>
                     {% endfor %}
                 </div>
             </div>
